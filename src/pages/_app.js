@@ -1,4 +1,7 @@
 import { Fragment } from 'react';
+import store from "../stores/store";
+import {Provider} from "react-redux";
+
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -20,6 +23,7 @@ const App = (props) => {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
+    <Provider store={store}>
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
@@ -45,6 +49,7 @@ const App = (props) => {
         </ThemeProvider>
       </LocalizationProvider>
     </CacheProvider>
+     </Provider>
   );
 };
 
